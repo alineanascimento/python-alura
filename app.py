@@ -1,3 +1,5 @@
+import os
+
 print("""
 ░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
 ██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
@@ -11,11 +13,11 @@ print("2. Listar restaurantes")
 print("3. Ativar restaurante")
 print("4. Sair\n")
 
-opcao_escolhida = input("Escolha uma opção: ")
-print(f"Você escolheu a opção {opcao_escolhida}")
+opcao_escolhida = int(input("Escolha uma opção: "))
+# print(f"Você escolheu a opção {opcao_escolhida}")
 
 # exercicio
-
+"""
 #1 
 print("Python na Escola de Programação da Alura")
 nome = "Aline"
@@ -27,4 +29,21 @@ print(f"Meu nome é {nome} e tenho {idade} anos. {mentira}.")
 print("A\nL\nU\nR\nA")
 #4
 pi = 3.14159
-print(f"O valor arredondado de pi é: {pi:.2f}")
+print(f"O valor arredondado de pi é: {pi:.2f}")"""
+
+def finalizar_app():
+    os.system("cls")
+    print("Finalizando o app...\n")
+
+
+
+
+
+if opcao_escolhida == 1:
+    print("Cadastrar restaurante...")
+elif opcao_escolhida == 2:
+    print("Listar restaurantes...")
+elif opcao_escolhida == 3:
+    print("Ativar restaurante...")
+else:
+    finalizar_app()
