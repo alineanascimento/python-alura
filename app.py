@@ -1,4 +1,7 @@
 import os
+
+restaurantes = ["Restaurante A", "Restaurante B", "Restaurante C"]
+
 def exibir_nome_do_progrma():
     
     print("""
@@ -22,40 +25,58 @@ def finalizar_app():
     os.system("cls")
     print("Finalizando o app...\n")
 
+def opcao_invalida():
+    
+    print("Opção inválida!\n")
+    input("Pressione qualquer tecla para voltar ao menu principal...")
+    main()
+
+def cadastrar_restaurante():
+    os.system("cls") # Limpa a tela
+    print("Cadastro de novos restaurantes\n")
+    nome = input("Insira o nome do restaurante que deseja cadastrar: ")
+    restaurantes.append(nome)
+    print(f"O restaurante {nome} cadastrado com sucesso!\n")
+    input("Pressione qualquer tecla para voltar ao menu principal...")
+    main() # Volta ao menu principal
+
+def listar_restaurantes():
+    os.system("cls")
+    print("Lista de restaurantes cadastrados:\n")
+    for restaurante in restaurantes:
+        print(f"- {restaurante}")
+    print("\n")
+    input("Pressione qualquer tecla para voltar ao menu principal...")
+    main()
+    
+
 def escolher_opcoes():
-    opcao_escolhida = int(input("Escolha uma opção: "))
-    # print(f"Você escolheu a opção {opcao_escolhida}")
+    try:
+        opcao_escolhida = int(input("Escolha uma opção: "))
+        # print(f"Você escolheu a opção {opcao_escolhida}")
 
-    if opcao_escolhida == 1:
-        print("Cadastrar restaurante...")
-    elif opcao_escolhida == 2:
-        print("Listar restaurantes...")
-    elif opcao_escolhida == 3:
-        print("Ativar restaurante...")
-    else:
-        finalizar_app()
-# print(f"Você escolheu a opção {opcao_escolhida}")
-
-# exercicio
-"""
-#1 
-print("Python na Escola de Programação da Alura")
-nome = "Aline"
-idade = 20
-mentira = "É mentira"
-#2
-print(f"Meu nome é {nome} e tenho {idade} anos. {mentira}.")
-#3
-print("A\nL\nU\nR\nA")
-#4
-pi = 3.14159
-print(f"O valor arredondado de pi é: {pi:.2f}")"""
-
+        if opcao_escolhida == 1:
+            cadastrar_restaurante()
+        elif opcao_escolhida == 2:
+            listar_restaurantes()
+        elif opcao_escolhida == 3:
+            print("Ativar restaurante...")
+        elif opcao_escolhida == 4:
+            finalizar_app()
+        else:
+            opcao_invalida()
+    except:
+        opcao_invalida()
+        
 
 def main():
+    os.system("cls")
     exibir_nome_do_progrma()
     exibir_opcao()
     escolher_opcoes()
     
 if __name__ == "__main__":
     main()
+    
+
+
