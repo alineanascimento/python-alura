@@ -14,11 +14,10 @@ def exibir_nome_do_progrma():
 ╚█████╗░███████║██████╦╝██║░░██║██████╔╝  █████╗░░░╚███╔╝░██████╔╝██████╔╝█████╗░░╚█████╗░╚█████╗░
 ░╚═══██╗██╔══██║██╔══██╗██║░░██║██╔══██╗  ██╔══╝░░░██╔██╗░██╔═══╝░██╔══██╗██╔══╝░░░╚═══██╗░╚═══██╗
 ██████╔╝██║░░██║██████╦╝╚█████╔╝██║░░██║  ███████╗██╔╝╚██╗██║░░░░░██║░░██║███████╗██████╔╝██████╔╝
-╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝  ╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝░""")
+╚═════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝  ╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝░░╚═╝╚══════╝╚═════╝░╚═════╝""")
 
 def exibir_opcao():
    
-    print("Finalizando o app...\n")
     print("1. Cadastrar restaurante")
     print("2. Listar restaurantes")
     print("3. Alternar status do restaurante")
@@ -64,7 +63,7 @@ def cadastrar_restaurante():
 def listar_restaurantes():
     exibir_subtitulo("Lista de restaurantes cadastrados")
     
-    print(f"{'Nome'.ljust(20)} | {'Categoria'.ljust(20)} | Status")
+    print(f"{'Nome'.ljust(22)} | {'Categoria'.ljust(20)} | Status")
     
     for restaurante in restaurantes:
         nome_restaurante = restaurante["nome"]
