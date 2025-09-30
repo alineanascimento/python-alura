@@ -1,9 +1,9 @@
-#lista
+#1
 numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 nomes = ["Aline", "Bruna", "Carlos", "Daniel", "Eduardo"]
 anos = [1990, 1985, 2000, 1975, 1960]
 
-#for
+#2
 for numero in numeros:
     print(numero)
     
