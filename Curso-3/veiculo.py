@@ -7,3 +7,5 @@ class Veiculo:
     def __str__(self):
         status = "ligado" if self._ligado else "desligado"
         return f"{self.marca} | {self.modelo} | Status {status}" 
+    
+    
