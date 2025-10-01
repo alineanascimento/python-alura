@@ -21,10 +21,15 @@ class Restaurante:
     def __init__(self, nome, categoria, local, avaliacao):
         self.nome = nome
         self.categoria = categoria
-        self.ativo = True
+        self.ativo = False
         self.local = local
         self.avaliacao = avaliacao
         Restaurante.restaurantes.append(self)
+
+    #metodo especial
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+
         
     def listar_restaurantes():
         for restaurante in Restaurante.restaurantes:
@@ -32,6 +37,15 @@ class Restaurante:
             
             
 restaurante1 = Restaurante("Aline", "Fast Food", "Recife", "5")
-
 Restaurante.listar_restaurantes()
+
+class Cliente:
+    def __init__(self, nome, idade, email, telefone):
+        self.nome = nome
+        self.idade = idade
+        self.email = email
+        self.telefone = telefone
+
+
+cliente1 = Cliente(nome = "Aline", idade = 20, email = "alineacioly", telefone = 99034814)
 

@@ -1,21 +1,36 @@
 from modelos.avaliacao import Avaliacao
 
 class Restaurante:
+    """Representa um restaurante e suas características."""
+
+
     restaurantes = []
     
     def __init__(self, nome, categoria):
+        """
+        Inicializa uma instância de Restaurante.
+
+        Parâmetros:
+        - nome (str): O nome do restaurante.
+        - categoria (str): A categoria do restaurante.
+        """
+
         self._nome = nome.title() #comecar com a letra maiscula usa-se title
         self._categoria = categoria.upper() # tudo com letra maiscula
         self._ativo = False # significa que o atributo é privado
         self._avaliacao = []
         Restaurante.restaurantes.append(self)
         
-    # ao selecionar um nome e apertar f2 vc muda o nome
     def __str__(self):
+        """Retorna uma representação em string do restaurante."""
+
         return f"{self._nome} | {self._categoria}"
     
     @classmethod
     def listar_restaurantes(cls):
+
+        """Exibe uma lista formatada de todos os restaurantes."""
+
         print(f"{"Nome do Restaurante".ljust(25)} | {"Categoria".ljust(25)} | {"Avaliação".ljust(25)} | {"Status"}")
         for restaurante in cls.restaurantes:
             print(f"{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {str(restaurante.media_avaliacao).ljust(25)} | {restaurante.ativo}")
@@ -23,14 +38,27 @@ class Restaurante:
     # _ significa que o atributo não pode ser mexido, só pela propriedade
     @property # modificar como aquilo vai ser lido
     def ativo(self):
+        """Retorna um símbolo indicando o estado de atividade do restaurante."""
+
+        
         return "❌" if self._ativo else "✔️"
     
     #metodo de objeto
     def alternar_estado(self):
+        """Alterna o estado de atividade do restaurante."""
+
         self._ativo = not self._ativo
     
     
     def receber_avaliacao(self, cliente, nota):
+        """
+        Registra uma avaliação para o restaurante.
+
+        Parâmetros:
+        - cliente (str): O nome do cliente que fez a avaliação.
+        - nota (float): A nota atribuída ao restaurante (entre 1 e 5).
+        """
+
         if 0 < nota <= 5:
             avaliacao = Avaliacao(cliente, nota)
             self._avaliacao.append(avaliacao)
@@ -38,6 +66,9 @@ class Restaurante:
         
     @property
     def media_avaliacao(self):
+        """Calcula e retorna a média das avaliações do restaurante."""
+
+
         if not self._avaliacao:
             return "-"
         soma_das_notas = sum(avaliacao._nota for avaliacao in self._avaliacao)

@@ -8,21 +8,28 @@ else:
     
 #2
 idade = int(input("Insira sua idade: "))
-if   0 <= idade < 12:
+if   0 < idade <= 12:
     print("Criança")
-elif 13 <= idade < 18:
+elif 12 < idade < 18:
     print("Adolescente")
-else:
+elif idade >= 18:
     print("Adulto")
+else:
+    print("Valor inválida")
 
 #3
+nome_correto = "Aline"
+senha_correta = 1234
+
 nome_usuario = input("Insira seu nome de usuário: ")
-senha_usuario = int(input("Insira sua senha: "))
-if nome_usuario == "Aline" and senha_usuario == "1234":
+senha_usuario = input("Insira sua senha: ")
+if nome_usuario == nome_correto and senha_usuario==senha_correta:
     print("Acesso permitido")
+else:
+    print("Acesso negado. Tente novamente.")
 
 #4
-coordenadas = int(input("Insira a coordenada x: ")), int(input("Insira a coordenada y: "))
+coordenadas = float(input("Insira a coordenada x: ")), float(input("Insira a coordenada y: "))
 if coordenadas[0] > 0 and coordenadas[1] > 0:
     print("Primeiro quadrante")
 elif coordenadas[0] < 0 and coordenadas[1] > 0:
