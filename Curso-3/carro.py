@@ -6,6 +6,5 @@ class Carro(Veiculo):
         self.portas = portas
         
     def __str__(self):
-        return f"{self.marca} | {self.modelo} | {self._ligado} | {self.portas}"
-    
+        return f"{super().__str__()} - Portas: {self.portas}"
     
