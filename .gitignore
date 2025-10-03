@@ -7,8 +7,10 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
+.pytest_cache/
 # Arquivos temporários e sistema
 *.log
 *.sqlite3
 .DS_Store
+
+
