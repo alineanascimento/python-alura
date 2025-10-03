@@ -1,41 +1,14 @@
-# Python
+# Ambientes virtuais
 venv/
+.env
+
+# Cache do Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.Python
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
 
-# Ambientes virtuais
-.env
-.venv
-env/
-ENV/
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Jupyter Notebook
-.ipynb_checkpoints/
-
-# Pytest
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Banco de dados
-*.db
+# Arquivos temporários e sistema
+*.log
 *.sqlite3
+.DS_Store
