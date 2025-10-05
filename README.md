@@ -29,6 +29,8 @@ Desenvolvimento de um sistema de gerenciamento de restaurantes via terminal.
 - Menu interativo no console  
 - Exibição organizada com subtítulos formatados  
 
+---
+
 ## ⚙️ Curso 2 — Python: Aplicando a Orientação a Objetos
 
 📌 **Descrição:**  
@@ -41,9 +43,6 @@ Reestruturação completa do sistema de restaurantes utilizando **Programação 
 - Herança e uso de `super()`
 - Classes e métodos abstratos (`from abc import ABC, abstractmethod`)
 - Modularização e importação de arquivos (`from arquivo import Classe`)
-
-
-📂 **Código:** [`/Curso-2`](Curso-2)
 
 ---
 
