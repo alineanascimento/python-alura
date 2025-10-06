@@ -30,3 +30,25 @@ with open ("dadox.csv", newline = "") as f:
     leitor = csv.reader(f)
     for linha in leitor:
         print(linha)
+
+
+#json
+import json 
+dados = {"nome": "ana", "idade": 20, "enderecos":["a", "b"]}
+with open ("dados.json", "w") as f:
+    json.dump(dados, f)
+
+
+with open("dados.json", "r") as f:
+    dados_lidos = json.load(f)
+    print(dados_lidos)
+"""
+limitacoes ddo uso de arquivos
+-falta de estrutura relacional
+-dificuldade de busca
+-concorrência 
+-falta de seguranca e integridade
+-escalabilidade
+
+"""
+
