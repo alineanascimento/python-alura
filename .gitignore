@@ -1,4 +1,16 @@
+# Ambientes virtuais
 venv/
+.env
+
+# Cache do Python
 __pycache__/
 *.pyc
-.env
+*.pyo
+*.pyd
+.pytest_cache/
+# Arquivos temporários e sistema
+*.log
+*.sqlite3
+.DS_Store
+
+
