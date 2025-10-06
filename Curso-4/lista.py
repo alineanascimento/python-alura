@@ -1,3 +1,5 @@
+#ordenada e mutável
+
 lista = [] #declarando uma lista vazia
 
 lista = [1, "Python", 2] #atribuindo valores a lista
@@ -19,3 +21,4 @@ print(lista)
 lista.insert(1, "aline") #adiciona em um index especifico
 
 print(lista)
+
