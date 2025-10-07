@@ -27,11 +27,11 @@ def criar_tabela_matricula():
     cursor = conn.cursor()
     cursor.execute(
         """
-            CREATE TABLE IF NOT EXISTS matricula(
+            CREATE TABLE IF NOT EXISTS matriculas(
                 id INTEGER PRIMARY KEY,
                 nome_disciplina TEXT,
                 estudante_id INTEGER,
-                FOREIGN KEY (estudante) REFERENCES estudantes(id)
+                FOREIGN KEY (estudante_id) REFERENCES estudantes(id)
             
             )
 
@@ -39,3 +39,67 @@ def criar_tabela_matricula():
     )
     conn.commit()
     conn.close()
+
+
+def criar_estudante(nome, idade):
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute(
+        """
+            INSERT INTO estudantes (nome, idade) \
+            VALUES (?, ?)
+
+        """, (nome, idade)
+    )
+    conn.commit()
+    conn.close()
+
+def listar_estudantes():
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute(
+        """
+            SELECT * FROM estudantes
+        """
+    )
+    estudantes = cursor.fetchall()
+    for estudante in estudantes:
+        print(estudante)
+
+    conn.commit()
+    conn.close()
+
+def criar_matricula(estudante_id, nome_disciplina):
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute(
+        """
+            INSERT INTO matriculas (estudante_id, nome_disciplina)\
+            VALUES (?, ?)
+
+
+        """, (estudante_id, nome_disciplina)
+    )
+    conn.commit()
+    conn.close()
+
+
+def listar_matriculas():
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT matriculas.id, estudantes.nome, matriculas.nome_disciplina
+        FROM matriculas
+        JOIN estudantes ON matriculas.estudante_id = estudantes.id
+    """)
+    
+    matriculas = cursor.fetchall()
+
+    print("ID | Estudante | Disciplina")
+    print("-" * 35)
+    for matricula in matriculas:
+        print(f"{matricula[0]:<2} | {matricula[1]:<10} | {matricula[2]}")
+
+    conn.close()
+
+# para executar exec(open("db.py").read())
