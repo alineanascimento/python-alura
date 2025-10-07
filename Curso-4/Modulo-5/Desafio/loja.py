@@ -52,3 +52,4 @@ def listar_produtos():
     conn.close()
 
 # para executar exec(open("loja.py").read())
+
