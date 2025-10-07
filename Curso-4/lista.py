@@ -21,4 +21,3 @@ print(lista)
 lista.insert(1, "aline") #adiciona em um index especifico
 
 print(lista)
-

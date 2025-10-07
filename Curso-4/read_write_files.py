@@ -51,4 +51,3 @@ limitacoes ddo uso de arquivos
 -escalabilidade
 
 """
-
