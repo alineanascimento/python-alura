@@ -21,7 +21,7 @@ cursor.execute(
          VALUES (?, ?)
         
      """,
-     (1, "Matemática")
+     (1, "Matemática") 
  )
 
 
