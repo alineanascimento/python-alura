@@ -19,4 +19,4 @@ for dados in dados_usuarios:
 
 conn.commit()
 
-conn.close()
+conn.close() 
