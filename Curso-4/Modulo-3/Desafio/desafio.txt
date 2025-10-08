@@ -1,0 +1,45 @@
+1 - Você foi contratado para desenvolver 2 sistemas:
+
+Um sistema bancário que exige registros altamente estruturados, consistência de dados e relações complexas entre contas, 
+clientes e transações.
+
+Um aplicativo de rede social que precisa armazenar dados de usuários, postagens com formatos variados e comentários dinâmicos.
+Questão:
+Qual tipo de banco de dados (relacional ou não relacional) você escolheria para cada caso? 
+Justifique sua escolha com base nas características de cada abordagem.
+
+RESPOSTA = Para o sistema bancário, que exige registros altamente estruturados, 
+consistência de dados e relações complexas entre contas, clientes e transações,
+ eu escolheria um banco de dados relacional (SQL).
+Essa escolha se justifica porque esse tipo de banco permite modelar relacionamentos entre entidades, 
+como clientes e suas respectivas contas, além de garantir integridade e consistência das informações por
+ meio de SGBDs (Sistemas Gerenciadores de Bancos de Dados).
+
+Já no caso do aplicativo de rede sociaL, a melhor opção seria um 
+banco de dados não relacional (NoSQL), pois esse tipo de sistema oferece maior flexibilidade na estrutura dos dados,
+permitindo armazenar informações com formatos variados, como textos, imagens e comentários,
+sem a rigidez de um esquema fixo. Além disso, os bancos NoSQL proporcionam escala e desempenho adequados
+para lidar com grandes volumes de usuários e interações dinâmicas.
+
+2 - Você foi convidado para dar uma consultoria referente a bancos de dados. 
+Considere um banco de dados relacional com as seguintes tabelas:
+
+alunos(id, nome)
+
+disciplinas(id, nome)
+
+matriculas(aluno_id, disciplina_id)
+
+Questões:
+Qual é a chave primária de cada tabela?
+RESPOSTA = alunos (id), disciplinas(id), matriculas (aluno_id, disciplina_id)
+
+Quais campos funcionam como chaves estrangeiras e o que isso significa?
+Na tabela matriculas, os campos:
+
+aluno_id → é chave estrangeira que referencia alunos(id)
+
+disciplina_id → é chave estrangeira que referencia disciplinas(id)
+
+Essas chaves estrangeiras estabelecem os relacionamentos entre as tabelas, garantindo a integridade referencial 
+ou seja, só é possível registrar uma matrícula se o aluno e a disciplina já existirem nas respectivas tabelas.
