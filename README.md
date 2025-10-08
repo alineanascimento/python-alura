@@ -121,7 +121,3 @@ def listar_estudantes():
         print(linha)
     conn.close()
 
-# Execução
-criar_tabela_estudantes()
-criar_estudante("Aline", 22)
-listar_estudantes()
