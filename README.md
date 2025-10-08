@@ -59,12 +59,6 @@ Criação de uma **API de cardápios de restaurantes** com FastAPI, consumindo d
 - Manipulação e gravação de dados **JSON**
 - Organização de respostas estruturadas
 
-💻 **Exemplo de endpoint:**
-```python
-@app.get("/api/restaurantes/")
-def get_restaurantes(restaurante: str = Query(None)):
-    ...
-
 ---
 
 🌐 **Curso 4 — Python: Persistência de Dados com Arquivos, Bancos de Dados e APIs REST**
@@ -75,49 +69,15 @@ Ao final, o projeto integra **FastAPI** e **PostgreSQL** para criar uma **API RE
 
 🧠 **Conceitos principais:**
 - Estruturas de dados: **listas, tuplas e dicionários**  
-- Leitura e gravação de arquivos em **.txt**, **.csv** e **.json**  
+- Leitura e gravação de arquivos **.txt**, **.csv** e **.json**  
 - Diferenças entre **bancos de dados relacionais (SQL)** e **não relacionais (NoSQL)**  
-- Criação e manipulação de tabelas no **SQLite** com o módulo `sqlite3`  
+- Manipulação e criação de tabelas com **SQLite**  
 - Prevenção de **SQL Injection** e boas práticas de segurança  
-- Integração do **Python com o SQLite** usando funções  
+- Integração do Python com **SQLite** e funções de CRUD  
 - Introdução à **API REST** e métodos **HTTP (GET, POST, PUT, DELETE)**  
 - Persistência com **PostgreSQL** e integração via **FastAPI + SQLAlchemy + Pydantic**  
-- Criação de **modelos**, **schemas** e **endpoints** para CRUD  
-- Execução e testes com **Uvicorn** e **Swagger UI**
+- Criação de **modelos**, **schemas** e **endpoints**  
+- Testes e execução com **Uvicorn** e **Swagger UI**
 
-📁 **Exemplo prático — Integração Python + SQLite:**
-
-```python
-import sqlite3
-
-def conectar():
-    return sqlite3.connect("escola.db")
-
-def criar_tabela_estudantes():
-    conn = conectar()
-    cursor = conn.cursor()
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS estudantes(
-            id INTEGER PRIMARY KEY,
-            nome TEXT,
-            idade INTEGER
-        )
-    """)
-    conn.commit()
-    conn.close()
-
-def criar_estudante(nome, idade):
-    conn = conectar()
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO estudantes (nome, idade) VALUES (?, ?)", (nome, idade))
-    conn.commit()
-    conn.close()
-
-def listar_estudantes():
-    conn = conectar()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM estudantes")
-    for linha in cursor.fetchall():
-        print(linha)
-    conn.close()
+---
 
