@@ -14,17 +14,3 @@ class EstudanteResponse(EstudanteBase):
     class Config:
         from_attributes = True
 
-
-# Matricula
-class MatriculaBase(BaseModel):
-    estudante_id: int
-    nome_disciplina: str
-
-class MatriculaCreate(MatriculaBase):
-    pass
-
-class MatriculaResponse(MatriculaBase):
-    id: int
-
-    class Config:
-        from_attributes = True
