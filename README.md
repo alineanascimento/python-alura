@@ -61,7 +61,7 @@ Criação de uma **API de cardápios de restaurantes** com FastAPI, consumindo d
 
 ---
 
-🌐 **Curso 4 — Python: Persistência de Dados com Arquivos, Bancos de Dados e APIs REST**
+## 🌐 **Curso 4 — Python: Persistência de Dados com Arquivos, Bancos de Dados e APIs REST**
 
 📌 **Descrição:**  
 Desenvolvimento de aplicações Python capazes de **armazenar e recuperar informações** utilizando **arquivos (.txt, .csv, .json)** e **bancos de dados relacionais e não relacionais (SQLite, PostgreSQL e MongoDB)**.  
