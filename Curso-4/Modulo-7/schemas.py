@@ -2,56 +2,93 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 
-class Perfil(BaseModel):
-    id: int
+# PERFIL
+
+class PerfilBase(BaseModel):
     idade: int
     endereco: str
+
+
+class PerfilCreate(PerfilBase):
+    pass
+
+
+class Perfil(PerfilBase):
+    id: int
 
     class Config:
         from_attributes = True
 
-class PerfilCreate(BaseModel):
-    idade: int
-    endereco: str
 
-class Estudante(BaseModel):
-    id: int
+# ESTUDANTE
+
+class EstudanteBase(BaseModel):
     nome: str
+    email: str
+
+
+class EstudanteCreate(EstudanteBase):
+    perfil: PerfilCreate
+
+
+class Estudante(EstudanteBase):
+    id: int
     perfil: Optional[Perfil] = None
 
     class Config:
         from_attributes = True
 
-class EstudanteCreate(BaseModel):
-    nome: str
-    email: str
-    perfil: PerfilCreate
 
-class Disciplina(BaseModel):
+
+# DISCIPLINA
+
+class DisciplinaBase(BaseModel):
+    nome: str
+    descricao: str
+
+
+class DisciplinaCreate(DisciplinaBase):
+    pass
+
+
+class Disciplina(DisciplinaBase):
     id: int
-    nome: str
-    descricao: str
-
-class DisciplinaCreate(BaseModel):
-    nome: str
-    descricao: str
-
-class Matricula(BaseModel):
-    estudante_id: int
-    disciplina_id: int
 
     class Config:
         from_attributes = True
 
-class MatriculaCreate(BaseModel):
+
+
+# MATRÍCULA
+
+class MatriculaBase(BaseModel):
     estudante_id: int
     disciplina_id: int
 
-class Professor(BaseModel):
-    nome: str
+
+class MatriculaCreate(MatriculaBase):
+    pass
+
+
+class Matricula(MatriculaBase):
+    id: Optional[int] = None
 
     class Config:
         from_attributes = True
 
-class ProfessorCreate(BaseModel):
+
+# PROFESSOR
+
+class ProfessorBase(BaseModel):
     nome: str
+
+
+class ProfessorCreate(ProfessorBase):
+    pass
+
+
+class Professor(ProfessorBase):
+    id: int
+
+    class Config:
+        from_attributes = True

@@ -1,78 +1,85 @@
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey, Text, CHAR
 from sqlalchemy.orm import relationship
 from database import Base
 
+
+# Tabela: Professor
+class Professor(Base):
+    __tablename__ = "professores"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nome = Column(String(100, collation="utf8mb4_general_ci"), nullable=False)
+
+    # Relacionamento 1:N -> Estudantes
+    estudantes = relationship(
+        "Estudante",
+        back_populates="professor",
+        cascade="all, delete-orphan"
+    )
+
+
+
+# Tabela: Estudante
+
 class Estudante(Base):
-    __tablename__ = 'estudantes'
-    id = Column(Integer, primary_key=True, index=True)
-    nome = Column(String)
-    email = Column(String)
-    perfil = relationship("Perfil",
+    __tablename__ = "estudantes"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nome = Column(String(100, collation="utf8mb4_general_ci"), nullable=False)
+    email = Column(String(120, collation="utf8mb4_general_ci"), unique=True, nullable=False)
+
+    # FK professor
+    professor_id = Column(Integer, ForeignKey("professores.id"), nullable=True)
+    professor = relationship("Professor", back_populates="estudantes")
+
+    # Relacionamentos
+    perfil = relationship(
+        "Perfil",
         back_populates="estudante",
         uselist=False,
         cascade="all, delete-orphan"
     )
     matriculas = relationship(
-        "Matricula", 
+        "Matricula",
         back_populates="estudante",
         cascade="all, delete-orphan"
     )
-    professor_id = Column(Integer, ForeignKey("professores.id"))
-    professor = relationship(
-        "Professor", 
-        back_populates="estudantes"
-    )
 
 
+# Tabela: Perfil (1:1 com Estudante)
 class Perfil(Base):
-    __tablename__ = 'perfis'
-    id = Column(Integer, primary_key=True, index=True)
-    idade = Column(Integer)
-    endereco = Column(String)
-    estudante_id = Column(
-        Integer,
-        ForeignKey("estudantes.id"),
-        unique=True
-    )
-    estudante = relationship(
-        "Estudante",
-        back_populates='perfil'
-    )
+    __tablename__ = "perfis"
 
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    idade = Column(Integer, nullable=True)
+    endereco = Column(String(200, collation="utf8mb4_general_ci"))
+
+    estudante_id = Column(Integer, ForeignKey("estudantes.id"), unique=True, nullable=False)
+    estudante = relationship("Estudante", back_populates="perfil")
+
+
+# Tabela: Disciplina
 class Disciplina(Base):
     __tablename__ = "disciplinas"
 
-    id = Column(Integer, primary_key=True, index=True)
-    nome = Column(String, nullable=False)
-    descricao = Column(String, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nome = Column(String(100, collation="utf8mb4_general_ci"), nullable=False)
+    descricao = Column(Text(collation="utf8mb4_general_ci"), nullable=False)
+
     matriculas = relationship(
         "Matricula",
-        back_populates='disciplina',
+        back_populates="disciplina",
         cascade="all, delete-orphan"
     )
 
+
+# Tabela: Matricula (N:N entre Estudante e Disciplina)
 class Matricula(Base):
     __tablename__ = "matriculas"
 
-    id = Column(Integer, primary_key=True, index=True)
-    estudante_id = Column(Integer, ForeignKey("estudantes.id"))
-    estudante = relationship(
-        "Estudante",
-        back_populates='matriculas'
-    )
-    disciplina_id = Column(Integer, ForeignKey("disciplinas.id"))
-    disciplina = relationship(
-        "Disciplina",
-        back_populates='matriculas'
-    )
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    estudante_id = Column(Integer, ForeignKey("estudantes.id"), nullable=False)
+    disciplina_id = Column(Integer, ForeignKey("disciplinas.id"), nullable=False)
 
-class Professor(Base):
-    __tablename__ = "professores"
-
-    id = Column(Integer, primary_key=True, index=True)
-    nome = Column(String, nullable=False)
-    estudantes = relationship(
-        "Estudante", 
-        back_populates="professor",
-        cascade="all, delete-orphan"
-    )
+    estudante = relationship("Estudante", back_populates="matriculas")
+    disciplina = relationship("Disciplina", back_populates="matriculas")
