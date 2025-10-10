@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 # URL de conexão com PostgreSQL
 # Formato: postgresql://usuario:senha@localhost:porta/nome_do_banco
-DATABASE_URL = "postgresql+psycopg2://postgres:postgres@localhost:5432/escola"
+DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/db_banco"
 
 # Cria o mecanismo de conexão (engine)
 engine = create_engine(DATABASE_URL)
