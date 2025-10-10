@@ -1,9 +1,10 @@
-from pydantic import BaseModel
+from email.policy import strict
+from pydantic import BaseModel, StrictInt # adicionar para validação 
 
 # Estudante
 class EstudanteBase(BaseModel): # criado como molde p/ entra e saida 
     nome: str
-    idade: int
+    idade: StrictInt
     email: str
 
 
