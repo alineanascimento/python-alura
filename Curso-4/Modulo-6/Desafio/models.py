@@ -7,3 +7,5 @@ class Estudante(Base):
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String(100), nullable=False)
     idade = Column(Integer)
+    email = Column(String(100))
+    senha = Column(String(100))

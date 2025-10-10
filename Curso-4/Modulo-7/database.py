@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # URL de conexão com o MySQL
-DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/db_escola"
+DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/db_colegio"
 
 # Cria o engine de conexão
 engine = create_engine(

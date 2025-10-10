@@ -3,11 +3,15 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # URL de conexão com PostgreSQL
-# Formato: postgresql://usuario:senha@localhost:porta/nome_do_banco
-DATABASE_URL = "postgresql+psycopg2://postgres:postgres@localhost:5432/escola"
+# Formato: mysql+pymysql://usuario:senha@localhost:porta/nome_do_banco
+DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/db_banco"
 
 # Cria o mecanismo de conexão (engine)
-engine = create_engine(DATABASE_URL)
+engine = create_engine(
+    DATABASE_URL,
+    echo=True,             # Mostra as queries SQL no terminal 
+    pool_pre_ping=True     # Evita erros de conexão inativa
+)
 
 # Cria uma fábrica de sessões
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

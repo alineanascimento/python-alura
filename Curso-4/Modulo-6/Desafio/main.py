@@ -29,6 +29,12 @@ def create_student(student: schemas.EstudanteCreate, db: Session = Depends(get_d
     db.refresh(db_student)
     return db_student
 
+# Listar todos os estudantes 
+@app.get("/estudantes/", response_model=List[schemas.EstudanteResponse])
+def read_students(db: Session = Depends(get_db)):
+    students = db.query(models.Estudante).all()
+    return students
+
 
 # Buscar estudante específico pelo ID (DESAFIO)
 @app.get("/estudantes/{estudante_id}", response_model=schemas.EstudanteResponse)
@@ -39,8 +45,3 @@ def read_student(estudante_id: int, db: Session = Depends(get_db)):
     return student
 
 
-# Listar todos os estudantes 
-@app.get("/estudantes/", response_model=List[schemas.EstudanteResponse])
-def read_students(db: Session = Depends(get_db)):
-    students = db.query(models.Estudante).all()
-    return students
