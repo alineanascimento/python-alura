@@ -8,7 +8,7 @@ from database import engine, SessionLocal
 # Inicializa a aplicação e o banco
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="API Escolar", version="1.0.0")
+app = FastAPI(title="API Escolar")
 
 
 
